@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of Satoru Suzuki - Digital Venture Owner, Developer, and Strategist.">
+<title>Satoru Suzuki | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" href="pfp.jpg" type="image/png">
+
+<style>
+:root {
+  --bg: #050506;
+  --panel: #0f1113;
+  --muted: #889096;
+  --accent: #ff00d1;
+  --accent-glow: rgba(255,0,209,0.35);
+  --glass: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.08);
+  --radius: 16px;
+  --max: 1100px;
+  --font-head: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* Base Reset & Smoothness */
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+/* 1. Breathing Background Animation */
+@keyframes neonPulse {
+  0% { background-position: 50% 0%; }
+  50% { background-position: 50% 15%; }
+  100% { background-position: 50% 0%; }
+}
+
+body { 
+  background: var(--bg);
+  background-image: radial-gradient(circle at 50% -20%, #2a0f25 0%, var(--bg) 60%);
+  background-size: 100% 120%;
+  animation: neonPulse 8s ease-in-out infinite;
+  color: var(--muted); 
+  font-family: var(--font-body); 
+  overflow-x: hidden;
+}
+
+/* Scroll Progress Bar */
+#scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+}
+
+/* Navigation Bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  background: rgba(5, 5, 6, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  display: flex;
+  justify-content: center; /* Centering the nav links */
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  transition: 0.3s;
+}
+
+.nav-links a {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  position: relative;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Hamburger Menu Icon (Hidden on Desktop) */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+::selection { background: var(--accent); color: #fff; }
+
+a { text-decoration: none; transition: 0.3s ease; }
+
+.container { max-width: var(--max); margin: auto; padding: 2rem; margin-top: 4rem; }
+
+/* Scroll Animation Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Header */
+header { 
+  display: flex; 
+  flex-direction: column; 
+  align-items:center; 
+  justify-content:center; 
+  text-align:center; 
+  padding: 8rem 1rem 4rem; 
+}
+header img { 
+  width:160px; 
+  height:160px; 
+  border-radius:50%; 
+  border:2px solid var(--accent); 
+  box-shadow: 0 0 40px var(--accent-glow);
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+header img:hover { transform: scale(1.05) rotate(2deg); box-shadow: 0 0 60px var(--accent-glow); }
+
+/* Neon Flicker Effect */
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 5px var(--accent-glow), 0 0 10px var(--accent-glow);
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.6;
+  }
+}
+
+header h1 { 
+  font-family: var(--font-head); 
+  color: #fff; 
+  font-size:3.5rem; 
+  margin:1.5rem 0 0.5rem;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  animation: flicker 4s infinite alternate;
+}
+header p { font-size:1.2rem; color: var(--muted); max-width: 600px; margin-top: 1rem; }
+
+/* Sections */
+section { margin: 6rem 0; scroll-margin-top: 100px; }
+.section-title { 
+  font-family: var(--font-head); 
+  color: #fff; 
+  font-size:2.2rem; 
+  margin-bottom:2.5rem; 
+  text-align:center; 
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.section-title::after {
+  content:''; display:block; width: 60px; height: 3px; background: var(--accent);
+  margin: 10px auto 0; border-radius: 2px; box-shadow: 0 0 15px var(--accent);
+}
+
+/* Panels */
+.panel { 
+  background: var(--panel); 
+  padding:1.5rem; 
+  border-radius: var(--radius); 
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); 
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+.panel:hover { 
+  transform: translateY(-7px); 
+  border-color: var(--accent);
+  box-shadow: 0 15px 40px var(--accent-glow);
+}
+
+/* About FIX: Centered text in 'About Me' section */
+#about { display:flex; flex-direction:column; align-items:center; gap:2rem; text-align:center; }
+#about img { 
+  width:100%; max-width:400px; 
+  border-radius: var(--radius); 
+  border:1px solid var(--border); 
+  box-shadow:0 0 30px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+#about p { max-width:700px; line-height: 1.6; text-align: center; /* Ensure text inside p tag is centered */ }
+
+/* Grid Systems */
+.grid { 
+  display:grid; 
+  gap:1.5rem; 
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); 
+}
+
+/* Enhanced Project Cards with Overlay */
+.project-card {
+  padding: 0; 
+  overflow: hidden; 
+  position: relative;
+  height: 250px; 
+  group: hover;
+}
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  transition: transform 0.6s ease;
+  display: block;
+}
+.project-card:hover img { transform: scale(1.15); filter: brightness(0.4); }
+
+.card-overlay {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  transition: bottom 0.4s ease-out;
+  pointer-events: none;
+}
+.project-card:hover .card-overlay { bottom: 0; }
+.card-overlay h3 { color: #fff; font-family: var(--font-head); margin-bottom: 0.3rem; }
+.card-overlay p { font-size: 0.85rem; color: var(--accent); font-weight: 600; }
+.card-overlay i {
+  position: absolute;
+  top: -30px; /* Moves icon up */
+  right: 20px;
+  color: #fff;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: 0.4s 0.1s;
+}
+.project-card:hover .card-overlay i { opacity: 1; transform: translateY(-10px); }
+
+
+/* Social Buttons */
+.social-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+.social-btn {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--panel); padding: 1rem 1.5rem; border-radius: var(--radius);
+  color: #fff; border: 1px solid var(--border); font-weight: 600;
+  transition: all 0.3s ease; min-width: 160px; justify-content: center;
+}
+.social-btn i { font-size: 1.4rem; transition: 0.3s; }
+.social-btn.x:hover { background: #000; border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+.social-btn.reddit:hover { background: #FF4500; border-color: #FF4500; box-shadow: 0 0 20px rgba(255,69,0,0.4); }
+.social-btn.discord:hover { background: #5865F2; border-color: #5865F2; box-shadow: 0 0 20px rgba(88,101,242,0.4); }
+.social-btn.youtube:hover { background: #FF0000; border-color: #FF0000; box-shadow: 0 0 20px rgba(255,0,0,0.4); }
+.social-btn.github:hover { background: #24292e; border-color: #fff; box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+.social-btn:hover { transform: translateY(-5px); }
+
+/* Contact */
+#contact form { display:flex; flex-direction:column; gap:1.2rem; max-width:500px; margin:auto; }
+#contact input, #contact textarea { padding:1rem; border:1px solid var(--border); border-radius: var(--radius); background: var(--glass); color:#fff; outline:none; font-family: inherit; transition: 0.3s; width: 100%; }
+#contact input:focus, #contact textarea:focus { border-color: var(--accent); background: rgba(255,255,255,0.08); box-shadow: 0 0 20px var(--accent-glow); }
+#contact button { padding:1rem; border:none; border-radius: var(--radius); background: var(--accent); color:#000; font-weight:700; font-size: 1rem; cursor:pointer; transition:0.3s; box-shadow:0 0 20px var(--accent-glow); text-transform: uppercase; letter-spacing: 1px; }
+#contact button:hover { transform: translateY(-3px); background:#fff; color:var(--accent); box-shadow:0 0 35px var(--accent-glow); }
+
+/* Footer */
+footer { text-align:center; color: var(--muted); padding:3rem 0; border-top:1px solid var(--border); margin-top:6rem; }
+
+/* Lightbox */
+#lightboxOverlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); backdrop-filter: blur(10px); display:none; align-items:center; justify-content:center; z-index:2000; opacity:0; transition: opacity 0.3s; }
+#lightboxOverlay.show { opacity: 1; display: flex; }
+#lightboxOverlay img { max-width:90%; max-height:85%; border-radius: var(--radius); box-shadow:0 0 50px var(--accent-glow); border: 1px solid var(--border); }
+#lightboxOverlay i { position: absolute; top: 30px; right: 30px; color: #fff; font-size: 2rem; cursor: pointer; transition: 0.2s; }
+#lightboxOverlay i:hover { color: var(--accent); transform: scale(1.1); }
+
+/* Responsive / Mobile Menu */
+@media (max-width: 768px) {
+  .navbar { justify-content: space-between; padding: 1rem 1.5rem; }
+  .hamburger { display: block; z-index: 1001; }
+  
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: #0f1113;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .nav-links.active { right: 0; }
+  .nav-links a { font-size: 1.2rem; }
+  
+  header h1 { font-size: 2.5rem; }
+  header p { padding: 0 1rem; }
+  .section-title { font-size: 1.8rem; }
+  .grid { grid-template-columns: 1fr; }
+  .social-grid { flex-direction: column; align-items: stretch; }
+  .social-btn { width: 100%; }
+}
+
+/* --- MUSIC PLAYER STYLES --- */
+.music-controls {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9998;
+}
+
+#musicBtn {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+#musicBtn:hover {
+  transform: scale(1.1);
+  border-color: var(--accent);
+  box-shadow: 0 0 25px var(--accent-glow);
+}
+
+/* Pulse animation when active */
+.playing {
+  animation: musicPulse 2s infinite;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+  background: var(--accent-glow) !important;
+}
+
+@keyframes musicPulse {
+  0% { box-shadow: 0 0 10px var(--accent-glow); }
+  50% { box-shadow: 0 0 30px var(--accent); }
+  100% { box-shadow: 0 0 10px var(--accent-glow); }
+}
+</style>
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+
+<audio id="bgMusic" loop>
+  <source src="music.m4a" type="audio/mp4"> 
+  <source src="music.m4a" type="audio/aac">
+</audio>
+
+
+
+<div class="music-controls">
+  <button id="musicBtn" onclick="toggleMusic()" title="Play/Pause Music">
+    <i class="fa-solid fa-music" id="musicIcon"></i>
+  </button>
+</div>
+
+<nav class="navbar">
+  <div class="hamburger" onclick="toggleMenu()">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+  <div class="nav-links">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#skills" onclick="toggleMenu()">Skills</a>
+    <a href="#projects" onclick="toggleMenu()">Gallery</a>
+    <a href="#socials" onclick="toggleMenu()">Socials</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+  </div>
+</nav>
+
+<header class="reveal">
+  <img src="pfp.jpg" alt="Profile Picture" loading="lazy">
+  <h1>Hi, it's Satoru Suzuki</h1>
+  <p>Welcome to my cyberpunk neon corner of the web. Discover my work, socials, and more.</p>
+</header>
+
+<div class="container">
+  <section id="about" class="reveal">
+    <div class="section-title">About Me</div>
+    <div class="panel" style="padding:0; overflow:hidden; border:none; box-shadow:none;">
+      <img class="lightbox" src="fullme.jpg" alt="Full Me" loading="lazy">
+    </div>
+    <p style="margin-top:1.5rem; text-align: center;">I'm Satoru Suzuki. I create, I explore, and I dive deep into technology, projects, and digital spaces. I own BlackMargin and a few other digital ventures. This space is my personal digital identity.</p>
+  </section>
+
+  <section id="skills" class="reveal">
+    <div class="section-title">Things I Own / Skills</div>
+    <div class="grid">
+      <div class="panel">
+        <i class="fa-solid fa-crown" style="color:var(--accent); font-size:1.5rem; margin-bottom:10px;"></i>
+        <h3>BlackMargin</h3>
+        <p style="font-size:0.9rem; margin-top:0.5rem; color:var(--muted)">Digital Venture</p>
+      </div>
+      <div class="panel">
+        <i class="fa-solid fa-code" style="color:var(--accent); font-size:1.5rem; margin-bottom:10px;"></i>
+        <h3>Development</h3>
+        <p style="font-size:0.9rem; margin-top:0.5rem; color:var(--muted)">Web & App Tech</p>
+      </div>
+      <div class="panel">
+        <i class="fa-solid fa-palette" style="color:var(--accent); font-size:1.5rem; margin-bottom:10px;"></i>
+        <h3>Design</h3>
+        <p style="font-size:0.9rem; margin-top:0.5rem; color:var(--muted)">UI/UX & Branding</p>
+      </div>
+      <div class="panel">
+        <i class="fa-solid fa-chess-knight" style="color:var(--accent); font-size:1.5rem; margin-bottom:10px;"></i>
+        <h3>Strategy</h3>
+        <p style="font-size:0.9rem; margin-top:0.5rem; color:var(--muted)">Growth & Vision</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="reveal">
+    <div class="section-title">Gallery / Projects</div>
+    <div class="grid">
+      <div class="panel project-card">
+        <img class="lightbox" src="pfp.jpg" alt="Project 1" loading="lazy">
+        <div class="card-overlay">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <h3>Project One</h3>
+            <p>Web Development</p>
+        </div>
+      </div>
+      <div class="panel project-card">
+        <img class="lightbox" src="pfp.jpg" alt="Project 2" loading="lazy">
+        <div class="card-overlay">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <h3>Project Two</h3>
+            <p>UI Design System</p>
+        </div>
+      </div>
+      <div class="panel project-card">
+        <img class="lightbox" src="pfp.jpg" alt="Project 3" loading="lazy">
+        <div class="card-overlay">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <h3>Project Three</h3>
+            <p>App Prototype</p>
+        </div>
+      </div>
+      <div class="panel project-card">
+        <img class="lightbox" src="pfp.jpg" alt="Project 4" loading="lazy">
+        <div class="card-overlay">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <h3>Project Four</h3>
+            <p>Digital Branding</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="socials" class="reveal">
+    <div class="section-title">Social Media</div>
+    <div class="social-grid">
+      <a href="https://x.com/satoru_suzukii" target="_blank" rel="noopener noreferrer" class="social-btn x"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a>
+      <a href="https://github.com/satoru-suzukii" target="_blank" rel="noopener noreferrer" class="social-btn github"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href="https://www.reddit.com/u/Reporter_Dazzling" target="_blank" rel="noopener noreferrer" class="social-btn reddit"><i class="fa-brands fa-reddit-alien"></i> Reddit</a>
+      <a href="https://discord.gg/UMVS8UqVgb" target="_blank" rel="noopener noreferrer" class="social-btn discord"><i class="fa-brands fa-discord"></i> Discord</a>
+      <a href="https://youtube.com/@satorusuzuki7371" target="_blank" rel="noopener noreferrer" class="social-btn youtube"><i class="fa-brands fa-youtube"></i> YouTube</a>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <div class="section-title">Contact Me</div>
+    <form action="https://formsubmit.co/devilking7371@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>© 2025 Satoru Suzuki</footer>
+</div>
+
+<div id="lightboxOverlay" onclick="closeLightbox()">
+  <i class="fa-solid fa-xmark"></i>
+  <img src="" alt="Lightbox Image">
+</div>
+
+<script>
+// Scroll progress
+const scrollBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  scrollBar.style.width = (scrollTop / docHeight * 100) + '%';
+});
+
+// Mobile Menu Toggle
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
+
+// Lightbox functionality
+const lbOverlay = document.getElementById('lightboxOverlay');
+const lbImage = lbOverlay.querySelector('img');
+
+document.querySelectorAll('.lightbox').forEach(img => {
+    img.addEventListener('click', function(e) {
+        lbImage.src = this.src;
+        lbImage.alt = this.alt;
+        lbOverlay.classList.add('show');
+    });
+});
+
+function closeLightbox() {
+    lbOverlay.classList.remove('show');
+}
+
+// Reveal Animation functionality
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll() {
+    const windowHeight = window.innerHeight;
+    const revealPoint = 150; 
+
+    for (let i = 0; i < reveals.length; i++) {
+        const revealTop = reveals[i].getBoundingClientRect().top;
+
+        if (revealTop < windowHeight - revealPoint) {
+            reveals[i].classList.add('active');
+        } 
+    }
+}
+
+window.addEventListener('load', revealOnScroll);
+window.addEventListener('scroll', revealOnScroll);
+
+/* --- MUSIC PLAYER LOGIC --- */
+const music = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+const musicIcon = document.getElementById('musicIcon');
+let isPlaying = false;
+
+function toggleMusic() {
+  if (isPlaying) {
+    music.pause();
+    musicIcon.classList.remove('fa-pause');
+    musicIcon.classList.add('fa-music');
+    musicBtn.classList.remove('playing');
+  } else {
+    music.play();
+    musicIcon.classList.remove('fa-music');
+    musicIcon.classList.add('fa-pause');
+    musicBtn.classList.add('playing');
+  }
+  isPlaying = !isPlaying;
+}
+
+// Try to auto-play on load (Browsers may block this, so we handle it gracefully)
+window.addEventListener('load', () => {
+  music.volume = 0.4; // 40% volume so it's not ear-blasting
+  
+  let playPromise = music.play();
+
+  if (playPromise !== undefined) {
+    playPromise.then(_ => {
+      // Auto-play started successfully
+      isPlaying = true;
+      musicIcon.classList.remove('fa-music');
+      musicIcon.classList.add('fa-pause');
+      musicBtn.classList.add('playing');
+    })
+    .catch(error => {
+      // Auto-play was blocked. UI remains in "Paused" state.
+      console.log("Autoplay prevented by browser. User must click play.");
+      music.pause();
+      isPlaying = false;
+    });
+  }
+});
+</script>
+</body>
+</html>
