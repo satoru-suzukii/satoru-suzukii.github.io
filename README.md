@@ -27,3 +27,12 @@ Since this is a static, single-file site, no installation (`npm install`) is req
     * `music.m4a` (Background Audio)
 3.  **Run:** simply double-click `index.html` to open it in your browser.
 
+
+## 🎨 Customization
+
+To make this template your own, look for these sections in the code:
+
+### 1. The Contact Form
+Locate the `<form>` tag in the HTML. Change the email address to your own:
+```html
+<form action="[https://formsubmit.co/YOUR_EMAIL_HERE@gmail.com](https://formsubmit.co/YOUR_EMAIL_HERE@gmail.com)" method="POST">
